@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Travel Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f0f8; /* soft lavender tint */
+            margin: 0;
+            padding: 20px;
+            color: #4b3f72;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5e4b8b;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #5e4b8b;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="date"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #d1c4e9;
+            border-radius: 8px;
+            font-size: 15px;
+            background-color: #faf7ff;
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        form button {
+            background-color: #7b5cb6; /* lavender accent */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: #5e4b8b;
+        }
+
+        /* Table Styling */
+        table {
+            width: 90%;
+            margin: 0 auto 40px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 14px 18px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #7b5cb6;
+            color: white;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f4f0f8;
+        }
+
+        table tr:hover {
+            background-color: #e6dff3;
+        }
+
+        @media(max-width: 768px){
+            form, table {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Paris Travel Experience</h1>
+
+    <!-- Travel Experience Form -->
+    <form id="travelForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="visitDate">Date of Visit</label>
+        <input type="date" id="visitDate" name="visitDate" required>
+
+        <label for="places">Places Visited</label>
+        <input type="text" id="places" name="places" placeholder="Eiffel Tower, Louvre, etc." required>
+
+        <label for="experience">Experience Description</label>
+        <textarea id="experience" name="experience" placeholder="Describe your experience in Paris..." required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Travel Experience Table -->
+    <table id="experienceTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Visit</th>
+                <th>Places Visited</th>
+                <th>Experience</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Pre-filled sample data -->
+            <tr>
+                <td>Emily Clark</td>
+                <td>emily@example.com</td>
+                <td>2024-05-10</td>
+                <td>Eiffel Tower, Louvre</td>
+                <td>Absolutely loved the Eiffel Tower! The view from the top was breathtaking.</td>
+            </tr>
+            <tr>
+                <td>James Smith</td>
+                <td>james@example.com</td>
+                <td>2023-09-22</td>
+                <td>Notre Dame, Montmartre</td>
+                <td>Montmartre was charming. The art and cafes made it unforgettable.</td>
+            </tr>
+            <tr>
+                <td>Sophia Lee</td>
+                <td>sophia@example.com</td>
+                <td>2024-03-15</td>
+                <td>Louvre, Seine River Cruise</td>
+                <td>The Louvre was massive! I could spend days exploring the artwork.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('travelForm');
+        const tableBody = document.getElementById('experienceTable').querySelector('tbody');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = form.name.value;
+            const email = form.email.value;
+            const visitDate = form.visitDate.value;
+            const places = form.places.value;
+            const experience = form.experience.value;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>${visitDate}</td>
+                <td>${places}</td>
+                <td>${experience}</td>
+            `;
+
+            tableBody.appendChild(row);
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
